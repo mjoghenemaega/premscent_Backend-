@@ -131,8 +131,8 @@
 								<ul class="submenu">
 														
 									
-							<li><a href="login.html">Login</a></li>
-							<li><a href="register.html">Register</a></li>				
+							<li><a href="{% url 'login' %}">Login</a></li>
+							<li><a href="{% url 'register' %}">Register</a></li>				
 								</ul>
 							</li>
 									
@@ -143,7 +143,7 @@
 						</ul>
 					</div>		 
 					<ul class="nav header-navbar-rht">
-						<li><a href="login.html" class="log-btn"><img src="{%  static 'assets/img/icon/reg-icon-04.svg' %}" class="me-1" alt="icon"> Sign in</a> <span class="space-login">/</span><a href="register.html" class="log-btn"> Register</a></li>
+						<li><a href="{% url 'login' %}" class="log-btn"><img src="{%  static 'assets/img/icon/reg-icon-04.svg' %}" class="me-1" alt="icon"> Sign in</a> <span class="space-login">/</span><a href="{% url 'register' %}" class="log-btn"> Register</a></li>
 						<li><a href="post-project.html" class="login-btn">Post a Project </a></li>
 					</ul>
 				</nav>
@@ -1125,8 +1125,8 @@
 								<h2>Find Your Next Great Job Opportunity!</h2>
 								<p>Its just  a click away </p>
 								<div class="next-job-btn next-with-job">
-									<a href="login.html" class="btn btn-primary next-sign me-3">Sign in with us</a>
-									<a href="register.html" class="btn btn-primary next-register">Register with us</a>
+									<a href="{% url 'login' %}" class="btn btn-primary next-sign me-3">Sign in with us</a>
+									<a href="{% url 'register' %}" class="btn btn-primary next-register">Register with us</a>
 								</div>
 							</div>
 						</div>
@@ -1164,8 +1164,8 @@
 											<ul>
 												<li><a href="about.html">About Us</a></li>
 												<li><a href="">Jobs</a></li>
-												<li><a href="login.html">Login</a></li>
-												<li><a href="register.html">Register</a></li>
+												<li><a href="{% url 'login' %}">Login</a></li>
+												<li><a href="{% url 'register' %}">Register</a></li>
 												<li><a href="">Forgot Password</a></li>
 											</ul>
 										</div>
