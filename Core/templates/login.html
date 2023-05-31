@@ -1,0 +1,361 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Premscent</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{%  static 'assets/img/favicon.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{%  static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{%  static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{%  static 'assets/plugins/fontawesome/css/all.min.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{%  static 'assets/css/style.css' %}">
+	</head>	
+	<body class="account-page">
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+					
+			<!-- Start Navigation -->
+			<!-- Header -->
+			<header class="header header-four">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="{% url 'home' %}" class="navbar-brand logo">
+							<img src="{%  static 'assets/img/PremScent__5.png' %}" width="196PX" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="{% url 'home' %}" class="menu-logo">
+								<img src="{%  static 'assets/img/PremScent__5.png' %}" width="196PX"class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="active ">
+								<a href="{% url 'home' %}">Home </a>
+								
+							</li>
+							<li class="has-submenu">
+								<a href="">For Service Seekers <i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+									<li class="has-submenu">
+										<a href="#">Service Providers</a>
+										<ul class="submenu">
+											<li><a href="developer.html">Service Providers</a></li>
+											<li><a href="">Service Providers Details</a></li>
+										</ul>
+									</li>
+									<!-- <li><a href="dashboard.html">Dashboard</a></li>	 -->
+									<li><a href="">My Profile</a></li>	
+									<li><a href="">Company Details</a></li>	
+									<li><a href="">Projects</a></li>
+									<li><a href="">Favourites</a></li>
+									<li><a href="">Membership</a></li>
+									<li><a href="">Milestones</a></li>
+									<li><a href="">Chats</a></li>
+									<li><a href="">Review</a></li>			
+									<li><a href="">Payments</a></li>							
+									<li><a href="">Verify Identity</a></li>								
+									<li><a href="profile-settings.html">Settings</a></li>								
+								</ul>
+							</li>
+							<li class="has-submenu">
+								<a href="">For Service Provider<i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+									<li class="has-submenu">
+										<a href="#">Jobs</a>
+										<ul class="submenu">
+											<li><a href="">Jobs</a></li>
+											<li><a href="project-details.html">Job Details</a></li>
+										</ul>
+									</li>
+									<li><a href="">Dashboard</a></li>
+									<li><a href="">My Profile</a></li>	
+									<li><a href="">service provider Details</a></li>
+									<li><a href="">Projects</a></li>
+									<li><a href="">Favourites</a></li>
+									<li><a href="">Membership</a></li>
+									<li><a href="">Change Password</a></li>
+									<li><a href="">Chats</a></li>
+									<li><a href="">Review</a></li>			
+									<li><a href="">Payments</a></li>							
+									<li><a href="">Verify Identity</a></li>				
+									<li><a href="">Settings</a></li>				
+								</ul>
+							</li>
+							<li><a href="about.html">About us</a></li>
+							<li class="has-submenu">
+								<a href="">My Account<i class="fas fa-chevron-down"></i></a>
+								<ul class="submenu">
+														
+									
+							<li><a href="{% url 'login' %}">Login</a></li>
+							<li><a href="{% url 'register' %}">Register</a></li>				
+								</ul>
+							</li>
+									
+									
+						
+									
+
+						</ul>
+					</div>		 
+					<ul class="nav header-navbar-rht">
+						<li><a href="{% url 'login' %}" class="log-btn"><img src="{%  static 'assets/img/icon/reg-icon-04.svg' %}" class="me-1" alt="icon"> Sign in</a> <span class="space-login">/</span><a href="{% url 'register' %}" class="log-btn"> Register</a></li>
+						<li><a href="post-project.html" class="login-btn">Post a Project </a></li>
+					</ul>
+				</nav>
+			</header>
+			<!-- /Header -->	
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container">					
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+							
+							<!-- Login Content -->
+							<div class="account-content">
+								<div class="align-items-center justify-content-center">
+									<div class="login-right">
+										<div class="login-header text-center">
+											<a href="index.html"><img src="{%  static 'assets/img/logo-01.png' %}" alt="logo" class="img-fluid"></a>
+											<h3>Welcome Back</h3>
+											<p>Don't miss your next opportunity. Sign in to stay updated on your professional world.</p>
+										</div>
+										<form method="post">
+			
+                                            {% csrf_token %}
+                                            {{ form.as_p }}  
+											<div class="form-group">
+												<label class="custom_check">
+													<input type="checkbox" name="rem_password">
+													<span class="checkmark"></span> Remember password
+												</label>
+											</div>
+											<button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
+											<div class="login-or">
+												<p>Or login with</p>
+											</div>
+											<div class="row social-login">
+												<div class="col-4">
+													<a href="#" class="btn btn-twitter btn-block"> Twitter</a>
+												</div>
+												<div class="col-4">
+													<a href="#" class="btn btn-facebook btn-block"> Facebook</a>
+												</div>
+												<div class="col-4">
+													<a href="#" class="btn btn-google btn-block"> Google</a>
+												</div>
+											</div>
+											<div class="row">
+											<div class="col-6 text-start">
+												<a class="forgot-link" href="forgot-password.html">Forgot Password ?</a>
+											</div>
+											<div class="col-6 text-end dont-have">New to Premscent? <a href="register.html">Click here</a></div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- /Login Content -->
+								
+						</div>
+					</div>
+				</div>
+			</div>					
+			<!-- /Page Content -->
+   
+			<!-- Footer -->	
+			<footer class="footer footer-four">
+				<div class="footer-top aos" data-aos="fade-up">
+					<div class="container">
+
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="subscribe-four">
+											<h4 >Subscribe</h4>
+											<div class="banner-content aos aos-init aos-animate" data-aos="fade-up">
+												<form class="form" name="store" method="post" action="project.html">
+													<div class="form-inner">
+														<div class="input-group">
+															<input type="email" class="form-control" placeholder="Your Email address.....">
+															<button class="btn btn-primary sub-btn" type="submit">Send mail</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4">
+										<div class="footer-widget footer-menu">
+											<h2 class="footer-title">Useful Links</h2>
+											<ul>
+												<li><a href="about.html">About Us</a></li>
+												<li><a href="">Jobs</a></li>
+												<li><a href="login.html">Login</a></li>
+												<li><a href="register.html">Register</a></li>
+												<li><a href="">Forgot Password</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4">
+										<div class="footer-widget footer-menu">
+											<h2 class="footer-title">Help & Support</h2>
+											<ul>
+												<li><a href="javascript:;">Browse Candidates</a></li>
+												<li><a href="javascript:;">Employers Dashboard</a></li>
+												<li><a href="javascript:;">Job Packages</a></li>
+												<li><a href="javascript:;">Jobs Featured</a></li>
+												<li><a href="javascript:;">Post A Job</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-4 col-md-4">
+										<div class="footer-widget footer-menu">
+											<h2 class="footer-title">Featured Catgeories</h2>
+											<ul>
+												<li><a href="project.html">Engineering</a></li>
+												<li><a href="project.html">General services</a></li>
+												<li><a href="project.html">Legal services</a></li>
+												<li><a href="project.html">Consultancy</a></li>
+												<li><a href="project.html">Craftmen</a></li>
+												<li><a href="project.html">Special Services</a></li>
+												<li><a href="project.html">Home service </a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-5">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="footer-widget footer-menu play-app mt-4">
+											<div class="row">
+												<div class="col-lg-6 col-md-4">
+													<div class="free-customer">
+														<p>Toll Free Customer Care</p>
+														<h6>09157331321</h6>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-4">
+													<div class="free-customer">
+														<p>Toll Free Customer Care</p>
+														<h6>09157331321</h6>
+													</div>
+												</div>
+											</div>
+											<!-- <div class="applicate-mobile-blk">
+												<h6>Mobile Application</h6>
+												<p>Download our App and get the latest Breaking News Alerts and latest headlines and daily articles near you.</p>
+											</div>
+											<div class="row g-2">
+												<div class="col-lg-4">
+													<a href="#"><img class="img-fluid" src="assets/img/app-store.svg" alt="app-store"></a>
+												</div>
+												<div class="col-lg-4">
+													<a href="#"><img class="img-fluid" src="assets/img/google-play.svg" alt="google-play"></a>
+												</div>
+											</div> -->
+											<div class="social-icon">
+												<p>Follow us on : </p>
+												<ul>
+													<li><a href="#" class="icon" target="_blank"><i class="fab fa-facebook-f"></i> </a></li>
+													<li><a href="#" class="icon" target="_blank"><i class="fab fa-instagram"></i> </a></li>
+													<li><a href="#" class="icon" target="_blank"><i class="fab fa-twitter"></i> </a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Footer Top -->
+				
+				<!-- Footer Bottom -->
+                <div class="footer-bottom">
+					<div class="container">
+					
+						<!-- Copyright -->
+						<div class="copyright">
+							<div class="row">
+								<div class="col-md-12 ">
+									<div class="copyright-text text-center">
+										<p class="mb-0">Copyright 2023 © PremScent.com All right reserved. Designed<a href="https://mjfolio.netlify.app/">Mjfolio</a></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Copyright -->						
+					</div>
+				</div>
+				<!-- /Footer Bottom -->				
+			</footer>
+			<!-- /Footer -->	
+			
+		</div>
+		<!-- /Main Wrapper -->
+
+		<!-- jQuery -->
+		<script src="{%  static 'assets/js/jquery-3.6.1.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{%  static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Slick JS -->
+		<script src="{%  static 'assets/js/slick.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{%  static 'assets/js/script.js' %}"></script>
+        <style>
+            form {
+          width: 80%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          justify-content: center;
+          font-size: large;
+          }
+          
+          /* Style for the form fields */
+          form input[type="text"],
+          form input[type="email"],
+          form input[type="password"],
+          form textarea {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+          }
+          
+          
+          </style>
+		
+	</body>
+</html>

@@ -153,22 +153,53 @@
 										</nav>
 										<div class="tab-content pt-0">
 											<div role="tabpanel" id="developer" class="tab-pane fade active show">
-												<form action="http://127.0.0.1:8000/service-renderer/">										
+												<form method="post">	
+													{% csrf_token %}									
 													<div class="form-group form-focus">
-														<input type="email" class="form-control floating">
-														<label class="focus-label">User Name</label>
+													
+														{{ form.username }}
+														{% if form.username.errors %}
+														  <ul class="errors">
+															{% for error in form.username.errors %}
+															  <li>{{ error }}</li>
+															{% endfor %}
+														  </ul>
+														{% endif %}
+
+														<label class="focus-label">{{ form.username.label }}</label>
 													</div>
 													<div class="form-group form-focus">
-														<input type="email" class="form-control floating">
-														<label class="focus-label">Email </label>
+														{{ form.email }}
+															{% if form.email.errors %}
+																<ul class="errors">
+																{% for error in form.email.errors %}
+																	<li>{{ error }}</li>
+																{% endfor %}
+																</ul>
+															{% endif %}
+														<label class="focus-label">{{ form.email.label }}</label>
 													</div>
 													<div class="form-group form-focus">
-														<input type="password" class="form-control floating">
-														<label class="focus-label">Password</label>
+														{{ form.password1 }}
+														{% if form.password1.errors %}
+														  <ul class="errors">
+															{% for error in form.password1.errors %}
+															  <li>{{ error }}</li>
+															{% endfor %}
+														  </ul>
+														{% endif %}
+														<label class="focus-label">{{ form.password1.label }}</label>
 													</div>	
 													<div class="form-group form-focus mb-0">
-														<input type="password" class="form-control floating">
-														<label class="focus-label">Confirm Password</label>
+														{{ form.password2 }}
+														{% if form.password2.errors %}
+														  <ul class="errors">
+															{% for error in form.password2.errors %}
+															  <li>{{ error }}</li>
+															{% endfor %}
+														  </ul>
+														{% endif %}
+														<label class="focus-label">{{ form.password2.label }}</label>
 													</div>	
 													<div class="dont-have">
 														<label class="custom_check">
@@ -185,6 +216,7 @@
 															<a href="#" class="btn btn-twitter btn-block"> Twitter</a>
 														</div>
 														<div class="col-4">
+														<div class="col-4">
 															<a href="#" class="btn btn-facebook btn-block"> Facebook</a>
 														</div>
 														<div class="col-4">
@@ -200,37 +232,70 @@
 												</form>
 											</div>
 											<div role="tabpanel" id="company" class="tab-pane fade">
-												<form action="http://127.0.0.1:8000/service-renderer/">										
+												
+												<form method="post">	
+													{% csrf_token %}									
 													<div class="form-group form-focus">
-														<input type="email" class="form-control floating">
-														<label class="focus-label">User Name</label>
+													
+														{{ form.username }}
+														{% if form.username.errors %}
+														  <ul class="errors">
+															{% for error in form.username.errors %}
+															  <li>{{ error }}</li>
+															{% endfor %}
+														  </ul>
+														{% endif %}
+
+														<label class="focus-label">{{ form.username.label }}</label>
 													</div>
 													<div class="form-group form-focus">
-														<input type="email" class="form-control floating">
-														<label class="focus-label">Email </label>
+														{{ form.email }}
+															{% if form.email.errors %}
+																<ul class="errors">
+																{% for error in form.email.errors %}
+																	<li>{{ error }}</li>
+																{% endfor %}
+																</ul>
+															{% endif %}
+														<label class="focus-label">{{ form.email.label }}</label>
 													</div>
 													<div class="form-group form-focus">
-														<input type="password" class="form-control floating">
-														<label class="focus-label">Password</label>
+														{{ form.password1 }}
+														{% if form.password1.errors %}
+														  <ul class="errors">
+															{% for error in form.password1.errors %}
+															  <li>{{ error }}</li>
+															{% endfor %}
+														  </ul>
+														{% endif %}
+														<label class="focus-label">{{ form.password1.label }}</label>
 													</div>	
 													<div class="form-group form-focus mb-0">
-														<input type="password" class="form-control floating">
-														<label class="focus-label">Confirm Password</label>
-													</div>
+														{{ form.password2 }}
+														{% if form.password2.errors %}
+														  <ul class="errors">
+															{% for error in form.password2.errors %}
+															  <li>{{ error }}</li>
+															{% endfor %}
+														  </ul>
+														{% endif %}
+														<label class="focus-label">{{ form.password2.label }}</label>
+													</div>	
 													<div class="dont-have">
 														<label class="custom_check">
 															<input type="checkbox" name="rem_password">
 															<span class="checkmark"></span> You agree to the Premscent <a href="privacy-policy.html">User Agreement, Privacy Policy,</a> and <a href="privacy-policy.html">Cookie Policy</a>.
 														</label>
-													</div>													
-													<button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Agree TO JOIN</button>
+													</div>
+													<button class="btn btn-primary btn-block btn-lg login-btn" type="submit">AGREE TO JOIN</button>	
 													<div class="login-or">
 														<p>Or login with</p>
-													</div>														
-													<div class="row form-row social-login">
+													</div>
+													<div class="row social-login">
 														<div class="col-4">
 															<a href="#" class="btn btn-twitter btn-block"> Twitter</a>
 														</div>
+														<div class="col-4">
 														<div class="col-4">
 															<a href="#" class="btn btn-facebook btn-block"> Facebook</a>
 														</div>
@@ -238,7 +303,7 @@
 															<a href="#" class="btn btn-google btn-block"> Google</a>
 														</div>
 													</div>
-													<div class="row form-row">
+													<div class="row">
 													<div class="col-6 text-start">
 														<a class="forgot-link" href="forgot-password.html">Forgot Password ?</a>
 													</div>
@@ -378,6 +443,32 @@
 		
 		<!-- Custom JS -->
 		<script src="{%  static 'assets/js/script.js' %}"></script>
+		<style>
+            form {
+          width: 80%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          justify-content: center;
+          font-size: large;
+          }
+          
+          /* Style for the form fields */
+          form input[type="text"],
+          form input[type="email"],
+          form input[type="password"],
+          form textarea {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+          }
+          
+          
+          </style>
 		
 	</body>
 </html>

@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.views.generic.edit import FormView
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegistrationForm, ProfileForm
+from .forms import CustomUserCreationForm
+from django.contrib.auth import login
+
 
 # Create your views here.
 def home(request):
@@ -21,31 +25,40 @@ def freelancer(request):
   return render(request, 'freelancer_signup.html')  
 
 
-def login(request):
+# def login(request):
 
-  return render(request, 'freelancer_signup.html')  
-
-
+#   return render(request, 'freelancer_signup.html')  
 
 
 
 
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+    fields = '__all__'
+    redirect_authenticated_user =True
+    
+    def get_success_url(self):
+        return reverse_lazy('home')    
 
 
 
+class register(FormView):
+    template_name= 'register.html'
+    fields = '__all__'
+    form_class = CustomUserCreationForm
+    redirect_authenticated_user =True
+    success_url = reverse_lazy('freelancer')
+  
+   
+    def form_valid(self, form ):
+        user =form.save()
+        num_fields = len(form.fields)
+        print(num_fields)
+        if user is not None:
+            login(self.request, user) 
+        return super(register, self).form_valid(form)
 
-def register(request):
-    if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        profile_form = ProfileForm(request.POST, request.FILES)
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            profile.save()
-            messages.success(request, 'Your account has been created! You can now log in.')
-            return redirect('login')
-    else:
-        user_form = UserRegistrationForm()
-        profile_form = ProfileForm()
-    return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form})
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('freelancer')
+        return super(register, self).get(*args, **kwargs)
